@@ -27,6 +27,7 @@ func clientShadowing() error {
 		log.Println(client)
 	}
 	// use client
+	_ = client
 	return fmt.Errorf("return")
 }
 
