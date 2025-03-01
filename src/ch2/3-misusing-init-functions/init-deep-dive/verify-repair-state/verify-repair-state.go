@@ -37,7 +37,7 @@ var (
 // - Setting up command-line flags to override defaults
 func init() {
 	fmt.Println("Running init for environment validation...")
-	
+
 	// Check if required variables are set
 	if user == "" {
 		// Fatal error for missing critical variable
@@ -45,18 +45,18 @@ func init() {
 		log.Println("$USER not set - would normally exit")
 		user = "defaultuser" // Using default for demonstration
 	}
-	
+
 	// Set default values for optional variables
 	if home == "" {
 		home = "/home/" + user
 		fmt.Printf("HOME not set, using default: %s\n", home)
 	}
-	
+
 	if gopath == "" {
 		gopath = home + "/go"
 		fmt.Printf("GOPATH not set, using default: %s\n", gopath)
 	}
-	
+
 	// Set up command-line flag to override gopath
 	// This shows how init can be used to configure the program
 	flag.StringVar(&gopath, "gopath", gopath, "override default GOPATH")
@@ -72,10 +72,10 @@ type ProductHandler struct{}
 type OrderHandler struct{}
 type AuthHandler struct{}
 
-func (h UserHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {}
+func (h UserHandler) ServeHTTP(w http.ResponseWriter, r *http.Request)    {}
 func (h ProductHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {}
-func (h OrderHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {}
-func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {}
+func (h OrderHandler) ServeHTTP(w http.ResponseWriter, r *http.Request)   {}
+func (h AuthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request)    {}
 
 // Package-level map to hold registered handlers
 var registeredHandlers map[string]http.Handler
@@ -87,7 +87,7 @@ var registeredHandlers map[string]http.Handler
 // - Ensuring required resources (directories) exist
 func init() {
 	fmt.Println("Running init for system integrity check...")
-	
+
 	// Initialize and register API handlers
 	registeredHandlers = make(map[string]http.Handler)
 	registeredHandlers["/api/users"] = UserHandler{}
@@ -122,17 +122,17 @@ func init() {
 // Display the verified/repaired state when imported
 func DisplayStateData() {
 	fmt.Println("\n=== Verify/Repair State Results ===")
-	
+
 	fmt.Println("\nConfiguration values:")
 	fmt.Printf("User: %s\n", user)
 	fmt.Printf("Home: %s\n", home)
 	fmt.Printf("Gopath: %s\n", gopath)
-	
+
 	fmt.Println("\nRegistered API endpoints:")
 	for endpoint := range registeredHandlers {
 		fmt.Printf("- %s\n", endpoint)
 	}
-	
+
 	fmt.Println("\nVerified directories:")
 	dirs := []string{"./uploads", "./logs", "./temp"}
 	for _, dir := range dirs {

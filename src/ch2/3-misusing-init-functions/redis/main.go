@@ -4,7 +4,7 @@ import "fmt"
 
 // imports
 
-func init(){
+func init() {
 	fmt.Print("init redis package")
 }
 

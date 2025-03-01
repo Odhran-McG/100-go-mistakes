@@ -7,11 +7,13 @@ import (
 )
 
 // Global variable
-//		any package function can alter this value
-//		unit tests that test around this are no longer isolated due to prior point
+//
+//	any package function can alter this value
+//	unit tests that test around this are no longer isolated due to prior point
 var db *sql.DB
 
 // Opening connection pool can fail
+//
 //	this means the package init function can close the application - not the caller
 //		maybe okay for some logic but better to make this decision explicitly elsewhere
 //	caller doesnt get a chance to retry or implement fallback logic as init doesn't return an error
@@ -30,10 +32,11 @@ func init() {
 }
 
 // Alternative to using init in this case
-//		error handling responibilty of caler
-//		easily test with an integration test
-//		connection pool, db pointer, is encapsulated within the function
-func createClient(dataSourceName string)  (*sql.DB, error) {
+//
+//	error handling responibilty of caler
+//	easily test with an integration test
+//	connection pool, db pointer, is encapsulated within the function
+func createClient(dataSourceName string) (*sql.DB, error) {
 	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
 		return nil, err
@@ -46,6 +49,6 @@ func createClient(dataSourceName string)  (*sql.DB, error) {
 
 }
 
-func main(){
+func main() {
 	createClient("var")
 }

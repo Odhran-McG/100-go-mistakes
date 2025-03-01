@@ -15,7 +15,7 @@ import (
 // - Loading and transforming data
 
 // Example 1.1: Complex graph data structure initialization
-// This example demonstrates creating and configuring a graph with nodes, 
+// This example demonstrates creating and configuring a graph with nodes,
 // edges, and calculated weights - something too complex for a single declaration.
 
 type Node struct {
@@ -72,22 +72,22 @@ func calculateInitialWeight(node *Node, g *Graph) int {
 // - Then calculate derived values (weights) based on the structure
 func init() {
 	fmt.Println("Running init for graph data structure...")
-	
+
 	// Create graph
 	graph = NewGraph()
-	
+
 	// Add nodes
 	graph.AddNode("A")
 	graph.AddNode("B")
 	graph.AddNode("C")
 	graph.AddNode("D")
-	
+
 	// Add edges
 	graph.AddEdge("A", "B")
 	graph.AddEdge("A", "C")
 	graph.AddEdge("B", "D")
 	graph.AddEdge("C", "D")
-	
+
 	// Initialize weights based on graph structure
 	nodeWeights = make(map[string]int)
 	for _, node := range graph.Nodes() {
@@ -109,9 +109,9 @@ var romanNumerals map[int]string
 // - Deriving additional values programmatically
 func init() {
 	fmt.Println("Running init for roman numerals map...")
-	
+
 	romanNumerals = make(map[int]string)
-	
+
 	// Base numerals (these could be simple declarations,
 	// but we want to compute additional values)
 	romanNumerals[1] = "I"
@@ -121,7 +121,7 @@ func init() {
 	romanNumerals[100] = "C"
 	romanNumerals[500] = "D"
 	romanNumerals[1000] = "M"
-	
+
 	// Derive additional entries programmatically
 	// This demonstrates why an init function is useful -
 	// we can write logic to generate values
@@ -134,12 +134,12 @@ func init() {
 // Display the initialized structures when imported
 func DisplayComplexData() {
 	fmt.Println("\n=== Complex Initialization Results ===")
-	
+
 	fmt.Println("\nGraph node weights:")
 	for nodeID, weight := range nodeWeights {
 		fmt.Printf("Node %s: %d\n", nodeID, weight)
 	}
-	
+
 	fmt.Println("\nRoman numerals map:")
 	for _, num := range []int{4, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000} {
 		fmt.Printf("%d = %s\n", num, romanNumerals[num])
